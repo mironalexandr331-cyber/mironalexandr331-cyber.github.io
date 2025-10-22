@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Master | Интерактивный учебник</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: white;
+            padding: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234361ee' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .logo-icon {
+            background: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transform: rotate(-10deg);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .header-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 60px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: fit-content;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Tag Cards */
+        .tag-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .tag-card:hover {
+            background: #f0f4ff;
+            transform: translateX(5px);
+        }
+
+        .tag-header {
+            display: flex;
+            align-items: center;
+            justify-content: between;
+            margin-bottom: 12px;
+        }
+
+        .tag-name {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tag-badge {
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .tag-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .tag-example {
+            background: var(--darker);
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 12px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            border: 1px solid #2d3748;
+        }
+
+        .tag-result {
+            background: #f7fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px dashed #cbd5e0;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        /* Practice Section */
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .example-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #e11574;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tag-chip {
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .tag-chip:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .code-editor {
+            width: 100%;
+            height: 300px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.5;
+        }
+
+        .preview-area {
+            width: 100%;
+            min-height: 300px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px;
+            background: white;
+            overflow: auto;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .tip-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--success);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .tip-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(76, 201, 240, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--success);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .tip-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .tip-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-card {
+                padding: 25px;
+            }
+            
+            .content-grid {
+                gap: 30px;
+            }
+            
+            .header-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content fade-in">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                </div>
+                <h1>HTML Master</h1>
+                <p class="subtitle">Интерактивный учебник для изучения HTML с нуля. Изучайте теги на практике с помощью встроенного редактора кода.</p>
+                
+                <div class="header-badges">
+                    <div class="badge">
+                        <i class="fas fa-play-circle"></i>
+                        Интерактивные примеры
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-laptop-code"></i>
+                        Редактор кода
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-mobile-alt"></i>
+                        Адаптивный дизайн
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <section class="section-card fade-in delay-1">
+                    <div class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h2>Теория: Основные HTML-теги</h2>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-header">
+                            <div class="tag-name">
+                                <i class="fas fa-heading"></i>
+                                &lt;h1&gt; - &lt;h6&gt;
+                                <span class="tag-badge">Заголовки</span>
+                            </div>
+                        </div>
+                        <div class="tag-description">Используются для создания заголовков разного уровня. &lt;h1&gt; - самый важный, &lt;h6&gt; - наименее важный.</div>
+                        <div class="tag-example">&lt;h1&gt;Главный заголовок&lt;/h1&gt;
+&lt;h2&gt;Подзаголовок&lt;/h2&gt;
+&lt;h3&gt;Третий уровень&lt;/h3&gt;</div>
+                        <div class="tag-result">
+                            <h1>Главный заголовок</h1>
+                            <h2>Подзаголовок</h2>
+                            <h3>Третий уровень</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-header">
+                            <div class="tag-name">
+                                <i class="fas fa-paragraph"></i>
+                                &lt;p&gt;
+                                <span class="tag-badge">Параграф</span>
+                            </div>
+                        </div>
+                        <div class="tag-description">Определяет параграф текста. Браузер автоматически добавляет отступы перед и после элемента.</div>
+                        <div class="tag-example">&lt;p&gt;Это пример параграфа текста. Здесь может быть любой текст.&lt;/p&gt;</div>
+                        <div class="tag-result">
+                            <p>Это пример параграфа текста. Здесь может быть любой текст.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-header">
+                            <div class="tag-name">
+                                <i class="fas fa-list-ul"></i>
+                                &lt;ul&gt; и &lt;li&gt;
+                                <span class="tag-badge">Списки</span>
+                            </div>
+                        </div>
+                        <div class="tag-description">&lt;ul&gt; создает маркированный список, а &lt;li&gt; определяет элементы списка.</div>
+                        <div class="tag-example">&lt;ul&gt;
+  &lt;li&gt;Первый пункт&lt;/li&gt;
+  &lt;li&gt;Второй пункт&lt;/li&gt;
+  &lt;li&gt;Третий пункт&lt;/li&gt;
+&lt;/ul&gt;</div>
+                        <div class="tag-result">
+                            <ul>
+                                <li>Первый пункт</li>
+                                <li>Второй пункт</li>
+                                <li>Третий пункт</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-header">
+                            <div class="tag-name">
+                                <i class="fas fa-bold"></i>
+                                &lt;strong&gt; и &lt;em&gt;
+                                <span class="tag-badge">Текст</span>
+                            </div>
+                        </div>
+                        <div class="tag-description">&lt;strong&gt; делает текст жирным (важным), а &lt;em&gt; делает текст курсивом (акцентированным).</div>
+                        <div class="tag-example">Это &lt;strong&gt;важный текст&lt;/strong&gt;, а это &lt;em&gt;акцентированный текст&lt;/em&gt;.</div>
+                        <div class="tag-result">
+                            Это <strong>важный текст</strong>, а это <em>акцентированный текст</em>.
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section-card fade-in delay-2">
+                    <div class="section-title">
+                        <div class="section-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h2>Практика: Редактор HTML</h2>
+                    </div>
+                    
+                    <div class="editor-header">
+                        <h3>Интерактивная площадка</h3>
+                        <button class="btn btn-accent" onclick="openInNewWindow()">
+                            <i class="fas fa-external-link-alt"></i>
+                            Открыть в новом окне
+                        </button>
+                    </div>
+                    
+                    <div class="example-selector">
+                        <button class="btn btn-outline" onclick="loadExample('basic')">
+                            <i class="fas fa-code"></i>
+                            Базовый HTML
+                        </button>
+                        <button class="btn btn-outline" onclick="loadExample('text')">
+                            <i class="fas fa-text-height"></i>
+                            Текст и списки
+                        </button>
+                        <button class="btn btn-outline" onclick="loadExample('links')">
+                            <i class="fas fa-link"></i>
+                            Ссылки и изображения
+                        </button>
+                    </div>
+                    
+                    <div class="tag-list">
+                        <div class="tag-chip" onclick="insertTag('&lt;h1&gt;&lt;/h1&gt;')">
+                            <i class="fas fa-heading"></i>
+                            h1
+                        </div>
+                        <div class="tag-chip" onclick="insertTag('&lt;p&gt;&lt;/p&gt;')">
+                            <i class="fas fa-paragraph"></i>
+                            p
+                        </div>
+                        <div class="tag-chip" onclick="insertTag('&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;')">
+                            <i class="fas fa-list-ul"></i>
+                            ul+li
+                        </div>
+                        <div class="tag-chip" onclick="insertTag('&lt;ol&gt;&lt;li&gt;&lt;/li&gt;&lt;/ol&gt;')">
+                            <i class="fas fa-list-ol"></i>
+                            ol+li
+                        </div>
+                        <div class="tag-chip" onclick="insertTag('&lt;strong&gt;&lt;/strong&gt;')">
+                            <i class="fas fa-bold"></i>
+                            strong
+                        </div>
+                        <div class="tag-chip" onclick="insertTag('&lt;em&gt;&lt;/em&gt;')">
+                            <i class="fas fa-italic"></i>
+                            em
+                        </div>
+                        <div class="tag-chip" onclick="insertTag('&lt;a href=&quot;&quot;&gt;&lt;/a&gt;')">
+                            <i class="fas fa-link"></i>
+                            a
+                        </div>
+                        <div class="tag-chip" onclick="insertTag('&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;')">
+                            <i class="fas fa-image"></i>
+                            img
+                        </div>
+                    </div>
+                    
+                    <textarea class="code-editor" id="html-code" placeholder="Введите ваш HTML-код здесь...">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Моя страница&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+    &lt;p&gt;Это моя первая HTML-страница.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                    
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <button class="btn" onclick="runCode()">
+                            <i class="fas fa-play"></i>
+                            Выполнить код
+                        </button>
+                        <button class="btn btn-outline" onclick="resetCode()">
+                            <i class="fas fa-redo"></i>
+                            Сбросить
+                        </button>
+                    </div>
+                    
+                    <h3 style="margin: 20px 0 10px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-eye"></i>
+                        Результат:
+                    </h3>
+                    <div class="preview-area" id="preview">
+                        <h1>Привет, мир!</h1>
+                        <p>Это моя первая HTML-страница.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <section class="section-card fade-in delay-3">
+                <div class="section-title">
+                    <div class="section-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h2>Советы по изучению HTML</h2>
+                </div>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Практикуйтесь регулярно</h3>
+                        <p>HTML лучше всего изучается на практике. Создавайте небольшие проекты, даже если это просто страница о себе или своих увлечениях.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3>Изучайте семантические теги</h3>
+                        <p>Семантические теги (header, footer, article, section) помогают поисковым системам и скринридерам лучше понимать структуру вашей страницы.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Проверяйте свой код</h3>
+                        <p>Используйте валидаторы HTML (например, validator.w3.org) для проверки правильности вашего кода.</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>Изучайте постепенно</h3>
+                        <p>Начните с базовых тегов, затем переходите к формам, таблицам, мультимедиа и более сложным элементам.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>HTML Master</h3>
+                    <p style="color: #a0aec0; margin-bottom: 20px;">Интерактивный учебник для изучения HTML с нуля. Практикуйтесь и становитесь профессионалом!</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: #a0aec0; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                        <a href="#" style="color: #a0aec0; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #a0aec0; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Разделы</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Теория HTML</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Практика</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Справочник тегов</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Примеры кода</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ресурсы</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Документация MDN</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Валидатор HTML</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> CodePen</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 HTML Master. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function runCode() {
+            const htmlCode = document.getElementById('html-code').value;
+            const preview = document.getElementById('preview');
+            preview.innerHTML = htmlCode;
+        }
+        
+        function resetCode() {
+            document.getElementById('html-code').value = '';
+            document.getElementById('preview').innerHTML = '';
+        }
+        
+        function loadExample(type) {
+            const editor = document.getElementById('html-code');
+            
+            switch(type) {
+                case 'basic':
+                    editor.value = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Моя страница</title>
+</head>
+<body>
+    <h1>Привет, мир!</h1>
+    <p>Это моя первая HTML-страница.</p>
+</body>
+</html>`;
+                    break;
+                    
+                case 'text':
+                    editor.value = `<h1>Заголовок страницы</h1>
+<h2>Подзаголовок</h2>
+<p>Это обычный параграф текста. Здесь мы можем написать любой текст, который хотим отобразить на странице.</p>
+<p>Этот текст содержит <strong>жирный элемент</strong> и <em>курсивный элемент</em>.</p>
+
+<h3>Маркированный список:</h3>
+<ul>
+    <li>Первый пункт</li>
+    <li>Второй пункт</li>
+    <li>Третий пункт</li>
+</ul>
+
+<h3>Нумерованный список:</h3>
+<ol>
+    <li>Первый пункт</li>
+    <li>Второй пункт</li>
+    <li>Третий пункт</li>
+</ol>`;
+                    break;
+                    
+                case 'links':
+                    editor.value = `<h1>Ссылки и изображения</h1>
+
+<p>Вот пример ссылки на <a href="https://www.google.com">Google</a>.</p>
+
+<p>А это ссылка, открывающаяся в новой вкладке: <a href="https://www.example.com" target="_blank">Example.com</a></p>
+
+<h2>Изображения</h2>
+<p>Вот пример изображения:</p>
+<img src="https://via.placeholder.com/300x150" alt="Пример изображения">
+
+<p>А это изображение с ссылкой:</p>
+<a href="https://www.example.com">
+    <img src="https://via.placeholder.com/200x100" alt="Кликабельное изображение">
+</a>`;
+                    break;
+            }
+            
+            runCode();
+        }
+        
+        function insertTag(tag) {
+            const editor = document.getElementById('html-code');
+            const startPos = editor.selectionStart;
+            const endPos = editor.selectionEnd;
+            const selectedText = editor.value.substring(startPos, endPos);
+            
+            // Если текст выделен, обернуть его в тег
+            if (selectedText) {
+                const openTag = tag.split('</')[0];
+                const closeTag = tag.includes('</') ? tag.split('>').slice(-2)[0] + '>' : '';
+                
+                editor.value = editor.value.substring(0, startPos) + 
+                              openTag + selectedText + closeTag + 
+                              editor.value.substring(endPos);
+                
+                // Установить курсор после вставленного тега
+                editor.selectionStart = startPos + openTag.length + selectedText.length + closeTag.length;
+                editor.selectionEnd = editor.selectionStart;
+            } else {
+                // Если текст не выделен, просто вставить тег
+                editor.value += tag;
+                
+                // Установить курсор между открывающим и закрывающим тегом, если это парный тег
+                if (tag.includes('</')) {
+                    const tagContentPos = editor.value.length - tag.split('>').slice(-2)[0].length - 1;
+                    editor.selectionStart = tagContentPos;
+                    editor.selectionEnd = tagContentPos;
+                }
+            }
+            
+            editor.focus();
+        }
+        
+        function openInNewWindow() {
+            const htmlCode = document.getElementById('html-code').value;
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(htmlCode);
+            newWindow.document.close();
+        }
+        
+        // Запустить код при загрузке страницы
+        window.onload = runCode;
+        
+        // Добавляем анимацию появления элементов при скролле
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(function(element) {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Проверить при загрузке
+        });
+    </script>
+</body>
+</html>
